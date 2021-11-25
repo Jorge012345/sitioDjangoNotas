@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Proyectos
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-titulo">
+    <h1>Proyectos</h1>
+  </div>
+  <div class="container mt-5">
+    <div class="row ">
+      {% for item in year_no_repeat %}
+      
+        <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-2 col-sm-3 col-4 mb-5">
+          
+          
+          <a href="{% url 'p_year' item.year %}" class="btn btn-danger" tabindex="-1" role="button"
+                aria-disabled="true">{{item.year}}</a>
+     
+        </div>
+        
+      
+      {% endfor %}
+    </div>
+    {% for item in projects|slice:":7" %}
+    <!--tarjeta-->
+    <div class="row contenido-proyectos">
+      <div class="col">
+        <div class="card mb-5">
+          <div class="row g-0 scroll-content fadeRight">
+            <div class="col-md-4 img-card-section card-section">
+
+              {% if item.fichero %}
+              <a href="{{item.fichero.url}}" target="_blank">
+                {% elif item.link %}
+                <a href="{{item.link}}" target="_blank">
+                  {% else %}
+                  <a href="#">
+                    {% endif %}
+                    <img src="{{item.image.url}}" class="img-fluid rounded-start" alt="..."></a>
+            </div>
+            <div class="col-md-8 ">
+              <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                {% if item.fichero %}
+                <a href="{{item.fichero.url}}" class="btn btn-lg" tabindex="-1" role="button" target="_blank"
+                  aria-disabled="true">Más info</a>
+                {% elif item.link %}
+                <a href="{{item.link}}" class="btn btn-lg" tabindex="-1" role="button" target="_blank"
+                  aria-disabled="true">Más info</a>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+    <!--Boton de ver mas proyectos-->
+    {% if projects|length > 7 %}
+    <div class="card row contenido-proyectos mb-5 mt-3">
+      <button class="btn btn-outline-primary mt-2" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseProjects" aria-expanded="false" aria-controls="collapseProjects">
+        Ver más proyectos
+      </button>
+    </div>
+    {% endif %}
+  </div>
+
+  <!--tarjetas de proyectos-->
+
+  <div id="collapseProjects" class="container collapse card  mb-4 ">
+    {% for item in projects|slice:"7:" %}
+    <div class="card mb-5">
+      <div class="row g-0 scroll-content fadeRight">
+        <div class="col-md-4 img-card-section card-section">
+
+          {% if item.fichero %}
+          <a href="{{item.fichero.url}}" target="_blank">
+            {% elif item.link %}
+            <a href="{{item.link}}" target="_blank">
+              {% else %}
+              <a href="#">
+                {% endif %}
+                <img src="{{item.image.url}}" class="img-fluid rounded-start" alt="..."></a>
+        </div>
+        <div class="col-md-8 ">
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.description}}</p>
+            {% if item.fichero %}
+            <a href="{{item.fichero.url}}" class="btn btn-lg" tabindex="-1" role="button" target="_blank"
+              aria-disabled="true">Más info</a>
+            {% elif item.link %}
+            <a href="{{item.link}}" class="btn btn-lg" tabindex="-1" role="button" target="_blank"
+              aria-disabled="true">Más info</a>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Asignaturas
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-titulo">
+    <h1>Asignaturas</h1>
+  </div>
+  <div class="container mt-5">
+
+    
+    <div class="row">
+      <div class="col">
+        <div class="row ">
+          {% for item in year_no_repeat %}
+          
+            <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-2 col-sm-3 col-4 mb-5">
+              
+              
+              <a href="{% url 's_year' item.year %}" class="btn btn-danger" tabindex="-1" role="button"
+                    aria-disabled="true">{{item.year}}</a>
+         
+            </div>
+            
+          
+          {% endfor %}
+        </div>
+        <div class="row">
+          {% for item in year|slice:":12" %}
+          <div class="col-xxl-3 col-lg-4 col-md-4 col-sm-6">
+            <div class="card mb-5 card-subjects">
+              <div class="card-header">{{item.header}}</div>
+              <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                {% if item.fichero %}
+                <a href="{{item.fichero.url}}" class="btn btn-lg" tabindex="-1" role="button" target="_blank"
+                  aria-disabled="true">Ver más</a>
+
+                {% endif %}
+              </div>
+              <div class="card-footer bg-transparent border-success">
+                <small>Última actualización: {{item.updated}}</small>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <!--Boton de ver mas asignaturas-->
+        {% if year|length > 12 %}
+        <div class="card row contenido-proyectos mb-5 mt-3">
+          <button class="btn btn-outline-primary mt-2" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseSubjects" aria-expanded="false" aria-controls="collapseSubjects">
+            Ver más asignaturas
+          </button>
+        </div>
+        {% endif %}
+        <div class="row">
+          {% for item in year|slice:"12:" %}
+          <!--tarjetas de asignaturas-->
+
+
+          <div class="col-xxl-3 col-lg-4 col-md-4 col-sm-6">
+            <div id="collapseSubjects" class="collapse card mb-4 ">
+              <div class="card mb-5 card-subjects">
+                <div class="card-header">{{item.header}}</div>
+                <div class="card-body">
+                  <h5 class="card-title">{{item.title}}</h5>
+                  <p class="card-text">{{item.description}}</p>
+                  {% if item.fichero %}
+                  <a href="{{item.fichero.url}}" class="btn btn-lg" tabindex="-1" role="button" target="_blank"
+                    aria-disabled="true">Ver más</a>
+
+                  {% endif %}
+                </div>
+                <div class="card-footer bg-transparent border-success">
+                  <small>Última actualización: {{item.updated}}</small>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+{% endblock content %}

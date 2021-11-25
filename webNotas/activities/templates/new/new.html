@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Noticia
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        {% for item in new %}
+                        <h1>{{item.title}}</h1>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col container-paragraph-new">
+                        {% for item in new %}
+                        {% if item.paragraph1 %}
+                        <p>{{item.paragraph1}}</p>
+                        {% endif %}
+                        {% if item.paragraph2 %}
+                        <p>{{item.paragraph2}}</p>
+                        {% endif %}
+                        {% if item.paragraph3 %}
+                        <p>{{item.paragraph3}}</p>
+                        {% endif %}
+                        {% if item.paragraph4 %}
+                        <p>{{item.paragraph4}}</p>
+                        {% endif %}
+                        {% if item.paragraph5 %}
+                        <p>{{item.paragraph5}}</p>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="row mb-5">
+                    <div class="col-lg-6 container-img-new">
+                        {% for item in new %}
+                        <img src="{{item.image.url}}" class="img-new" alt="">
+                     
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

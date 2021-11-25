@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Inicio
+{% endblock %}
+
+{% block content %}
+
+  {% include "carousel.html" %}
+  
+
+  <div class="container mt-5 campo-principal ">
+    {% for item in main %}
+    <!--tarjeta-->
+    <div class="row ">
+      <div class="col">
+        <div class="card mb-5">
+          <div class="row g-0 scroll-content fadeTop ">
+            <div class="col-md-6 contenido-presentacion ">
+              <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.description}}</p>
+
+              </div>
+            </div>
+            <div class="col-md-6 img-card-presentacion ">
+
+              <img src="{{item.image.url}}" class="img-fluid  " alt="...">
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+    
+  </div>
+  
+
+
+
+
+
+
+
+
+{% endblock content %}

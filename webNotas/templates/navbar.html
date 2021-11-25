@@ -1,0 +1,68 @@
+{% load static %}
+
+
+
+
+
+
+
+
+<div class="sidebar close" >
+  <div class="home-content">
+    <i class='bx bx-menu' ></i>
+    <span class="text"></span>
+  </div>
+  <ul class="nav-links">
+    <li class="{% if request.path == '/' %}active{% endif %}">
+      <a href="{% url 'home' %}">
+        <i class='bx bx-home'></i>
+        <span class="link_name">INICIO</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="{% url 'home' %}">INICIO</a></li>
+      </ul>
+    </li>
+    <li class="{% if request.path == '/cursos/' %}active{% endif %}">
+      <a href="{% url 'courses' %}">
+        <i class='bx bx-book'></i>
+        <span class="link_name">CURSOS</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="{% url 'courses' %}">CURSOS</a></li>
+      </ul>
+    </li>
+    <li class="{% if request.path == '/proyectos/' %}active{% endif %}">
+      <a href="{% url 'projects' %}">
+        <i class='bx bx-collection' ></i>
+        
+        <span class="link_name">PROYECTOS</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="{% url 'projects' %}">PROYECTOS</a></li>
+      </ul>
+    </li>
+    <li class="{% if request.path == '/actividades/' %}active{% endif %}">
+      <a href="{% url 'activities' %}">
+        <i class='bx bx-news'></i>
+        
+        <span class="link_name">ACTIVIDADES</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="{% url 'activities' %}">ACTIVIDADES</a></li>
+      </ul>
+    </li>
+    <li class="{% if request.path == '/asignaturas/' %}active{% endif %}">
+      <a href="{% url 'subjects' %}">
+        <i class='bx bx-folder'></i>
+        <span class="link_name">ASIGNATURAS</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="{% url 'subjects' %}">ASIGNATURAS</a></li>
+      </ul>
+    </li>
+
+    
+   
+
+  </ul>
+</div>
