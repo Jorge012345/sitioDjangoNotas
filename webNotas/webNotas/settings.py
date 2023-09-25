@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'webnota',
         'USER':'postgres',
-        'PASSWORD':'skate1999',
+        'PASSWORD':'*****',
         'HOST':'127.0.0.1',
         'DATABASE_PORT':'5432',
     }
